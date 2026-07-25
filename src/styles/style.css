@@ -55,6 +55,111 @@ body {
     padding: 5px;
 }
 
+/* stile delle righe delle carte */
+.card-row-1,
+.card-row-2,
+.card-row-3,
+.card-row-4,
+.card-row-5,
+.card-row-6,
+.card-row-7,
+.card-row-8 {
+    display: grid;
+    /* questo dice al browser di creare 8 colonne di uguale misuram dove 1fr sta per "fractional unit", ovvero una frazione dello spazio disponibile */
+    grid-template-columns: repeat(8, 1fr);
+    /* crea uno spazio sia verticale che orizzontale tra una carta e l'altra */
+    gap: 5px;
+}
+
+/* stile effettivo del contenitore della carta singola */
+.card {
+    position: relative;
+    /* width: 220px; */
+    height: 400px;
+    perspective: 1000px; /* questo darà una profondità per l'effetto 3D */
+}
+
+/* stile per il fronte e il retro della carta */
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box; /* questo manterrà le dimensioni esatte includendo anche il bordo */
+    backface-visibility: hidden; /* questo andrà la faccia dietro durante la rotazione */
+    transition: transform 0.6s ease; /* questo serve a rendere la rotazione fluida */
+    background: var(--fourth-color);
+}
+
+/* di base il retro è già ruotato di 180 gradi (quindi mostrerà la sua schiena, che è nascosta) */
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-front img {
+    width: 100%;
+    height: 65%;
+    object-fit: cover; /* va a ritagliare l'immagine per riempire tutto lo spazio senza distorcerla */
+    object-position: center top; /* fa in modo che l'immagine sia ritagliata in alto */
+    padding: 15px;
+    filter: drop-shadow(10px 0 5px var(--shadow-hue-color));
+}
+
+/* stile per l'immagine dei personaggi */
+.characters {
+    width: 100px;
+}
+
+/* stile personalizzato per alcuni */
+.kushina {
+    width: 400px !important;
+    object-fit: cover;
+    object-position: top;
+}
+
+.baki {
+    width: 300px !important;
+    object-fit: cover;
+    object-position: center left;
+    /* modo per centrarla in modo di ingrandirla come le altre e tenerla comunque centrata */
+    position: absolute;
+    right: -40%;
+}
+
+.orochimaru {
+    width: 280px !important;
+}
+
+.zabuza{
+    width: 250px !important;
+    /* modo per centrarla in modo di ingrandirla come le altre e tenerla comunque centrata */
+    position: absolute;
+    right: -10%;
+    top: -5%;
+}
+
+.kushina,
+.orochimaru {
+    /* modo per centrarla in modo di ingrandirla come le altre e tenerla comunque centrata */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* stili da utilizzare nel js per far si che la carta abbia la classe .flipped in modo che si giri*/
+.card.flipped .card-front {
+    transform: rotateY(180deg); /* con questa il fronte si gira e scompare */
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0deg);   /* con quest'altra invece il retro torna a 0 gradi e diventa visibile */
+}
+
 /* stile degli elementi all'intrno del footer */
 .section h3 {
     color: var(--fourth-color);

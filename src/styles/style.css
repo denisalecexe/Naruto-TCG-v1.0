@@ -2,8 +2,7 @@
 :root {
     --first-color: #ff9900;
     --second-color: #0b1b9b;
-    --third-color: #e50000;
-    --fourth-color: #ff55a3;
+    --card-front-color: #e5000098;
     --border-color: #ff3300;
     --shadow-hue-color: #0b1c9bc4;
     --text-color: #202020;
@@ -30,6 +29,12 @@ body {
     justify-content: center;
     background: var(--first-color);
     padding: 10px;
+}
+
+/* stile del main */
+#main {
+    background: var(--second-color);
+    padding: 15px;
 }
 
 /* stile del footer */
@@ -66,10 +71,12 @@ body {
 .card-row-8 {
     display: grid;
     /* questo dice al browser di creare 8 colonne di uguale misuram dove 1fr sta per "fractional unit", ovvero una frazione dello spazio disponibile */
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     /* crea uno spazio sia verticale che orizzontale tra una carta e l'altra */
-    gap: 5px;
+    column-gap: 15px; /* spazio orizzontale */
+    row-gap: 15px;    /* spazio verticale */
     perspective: 1000px; /* questo darà una profondità per l'effetto 3D */
+    padding: 15px;
 }
 
 /* stile effettivo del contenitore della carta singola */
@@ -77,7 +84,8 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    height: 400px;
+    height: 700px;
+    padding: 10px;
 }
 
 /* stile per il fronte e il retro della carta */
@@ -89,10 +97,11 @@ body {
     width: 100%;
     height: 100%;
     border: 5px solid var(--border-color);
+    border-radius: 12px;
     box-sizing: border-box; /* questo manterrà le dimensioni esatte includendo anche il bordo */
     backface-visibility: hidden; /* questo andrà la faccia dietro durante la rotazione */
     transition: transform 0.6s ease; /* questo serve a rendere la rotazione fluida */
-    background: var(--fourth-color);
+    background: var(--card-front-color);
 }
 
 /* di base il retro è già ruotato di 180 gradi (quindi mostrerà la sua schiena, che è nascosta) */
@@ -102,31 +111,29 @@ body {
 
 .card-front img {
     width: 100%;
-    height: 65%;
+    height: 100%;
     object-fit: cover; /* va a ritagliare l'immagine per riempire tutto lo spazio senza distorcerla */
     object-position: center top; /* fa in modo che l'immagine sia ritagliata in alto */
     padding: 15px;
-    filter: drop-shadow(10px 0 5px var(--shadow-hue-color));
+    filter: drop-shadow(18px 0 5px var(--shadow-hue-color));
+    text-align: center;
 }
 
 /* stile per l'immagine dei personaggi */
 .characters {
-    width: 100px;
+    width: 50px;
 }
 
 /* stile personalizzato per alcuni */
 .kushina {
-    width: 400px !important;
+    width: 350px !important;
     object-fit: cover;
-    object-position: top;
 }
 
 .baki {
-    width: 300px !important;
-    object-fit: cover;
-    object-position: center left;
-    /* modo per centrarla in modo di ingrandirla come le altre e tenerla comunque centrata */
     position: absolute;
+    width: 650px !important;
+    height: 500px !important;
     right: -40%;
 }
 
@@ -135,11 +142,10 @@ body {
 }
 
 .zabuza{
-    width: 250px !important;
+    width: 500px !important;
     /* modo per centrarla in modo di ingrandirla come le altre e tenerla comunque centrata */
     position: absolute;
-    right: -10%;
-    top: -5%;
+    top: -10%;
 }
 
 .kushina,

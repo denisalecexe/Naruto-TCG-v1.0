@@ -69,14 +69,15 @@ body {
     grid-template-columns: repeat(8, 1fr);
     /* crea uno spazio sia verticale che orizzontale tra una carta e l'altra */
     gap: 5px;
+    perspective: 1000px; /* questo darà una profondità per l'effetto 3D */
 }
 
 /* stile effettivo del contenitore della carta singola */
 .card {
     position: relative;
-    /* width: 220px; */
+    overflow: hidden;
+    border-radius: 12px;
     height: 400px;
-    perspective: 1000px; /* questo darà una profondità per l'effetto 3D */
 }
 
 /* stile per il fronte e il retro della carta */
@@ -88,8 +89,6 @@ body {
     width: 100%;
     height: 100%;
     border: 5px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
     box-sizing: border-box; /* questo manterrà le dimensioni esatte includendo anche il bordo */
     backface-visibility: hidden; /* questo andrà la faccia dietro durante la rotazione */
     transition: transform 0.6s ease; /* questo serve a rendere la rotazione fluida */

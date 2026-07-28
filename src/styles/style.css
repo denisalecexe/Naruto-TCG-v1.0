@@ -10,6 +10,13 @@
     --shadow-hue-color: #0b1c9bc4;
 }
 
+/* PSEUDO-ELEMENT */
+/* stile per lo scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    
+}
+
 /* UNIVERSAL TAG */
 /* aggiunta del cursore personalizzato a forma di kunai */
 * {
@@ -111,10 +118,32 @@ body {
     color: var(--text-box-color);
     margin-top: auto;
     padding: 15px;
-    height: 200px;
+    height: 150px;
     border: 2px solid var(--border-color);
     border-radius: 15px;
     z-index: 2;
+    font-size: 12px;
+    overflow: auto;
+}
+
+/* stile specifico per il testo del box */
+.text-description {
+    text-align: right;
+}
+
+.text-description h5 {
+    color: var(--first-color);
+}
+
+
+.text-description dt {
+    color: var(--second-color);
+    text-decoration: underline;
+    text-decoration-color: var(--second-color);
+}
+
+.text-description dd {
+    color: var(--text-box-color);
 }
 
 /* stile per il fronte e il retro della carta */
@@ -122,6 +151,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .card-front,
 .card-back {
     position: absolute;

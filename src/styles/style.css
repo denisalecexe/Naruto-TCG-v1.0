@@ -2,11 +2,12 @@
 :root {
     --first-color: #ff9900;
     --second-color: #0b1b9b;
-    --header-color: #e5000098;
-    --card-front-color: #bebaba;
+    --header-color: #e50000;
+    --card-front-color: #bababa;
+    --box-text-color: #969696;
+    --text-box-color: #202020;
     --border-color: #ff3300;
     --shadow-hue-color: #0b1c9bc4;
-    --text-color: #202020;
 }
 
 /* UNIVERSAL TAG */
@@ -19,7 +20,6 @@
 body {
     margin: 0;
     box-sizing: border-box;
-    color: var(--text-color);
 }
 
 /* ID SELECTOR */
@@ -105,7 +105,23 @@ body {
     background: linear-gradient(to right, var(--header-color), transparent);
 }
 
+/* stile per il box del testo */
+.box-description {
+    background: linear-gradient(to bottom, var(--box-text-color), transparent);
+    color: var(--text-box-color);
+    margin-top: auto;
+    padding: 15px;
+    height: 200px;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    z-index: 2;
+}
+
 /* stile per il fronte e il retro della carta */
+.card-front {
+    display: flex;
+    flex-direction: column;
+}
 .card-front,
 .card-back {
     position: absolute;
@@ -118,7 +134,7 @@ body {
     box-sizing: border-box; /* questo manterrà le dimensioni esatte includendo anche il bordo */
     backface-visibility: hidden; /* questo andrà la faccia dietro durante la rotazione */
     transition: transform 0.6s ease; /* questo serve a rendere la rotazione fluida */
-    background: var(--card-front-color);
+    background: linear-gradient(to bottom, var(--card-front-color), transparent);
 }
 
 /* di base il retro è già ruotato di 180 gradi (quindi mostrerà la sua schiena, che è nascosta) */

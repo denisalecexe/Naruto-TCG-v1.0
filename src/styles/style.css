@@ -72,7 +72,9 @@ body {
 .card-row-7,
 .card-row-8,
 .card-row-9,
-.card-row-10 {
+.card-row-10,
+.card-row-11,
+.card-row-12 {
     display: grid;
     /* questo dice al browser di creare 8 colonne di uguale misuram dove 1fr sta per "fractional unit", ovvero una frazione dello spazio disponibile */
     grid-template-columns: repeat(4, 1fr);

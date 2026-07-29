@@ -10,13 +10,6 @@
     --shadow-hue-color: #0b1c9bc4;
 }
 
-/* PSEUDO-ELEMENT */
-/* stile per lo scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-    
-}
-
 /* UNIVERSAL TAG */
 /* aggiunta del cursore personalizzato a forma di kunai */
 * {
@@ -118,13 +111,27 @@ body {
     color: var(--text-box-color);
     margin-top: auto;
     padding: 15px;
-    height: 150px;
+    height: 200px;
     border: 2px solid var(--border-color);
     border-radius: 15px;
     z-index: 2;
     font-size: 12px;
     overflow: auto;
 }
+
+/* stile per lo scrollbar */
+/* nasconderà la scrollbar per Chrome, Safari e Opera */
+.box-description::-webkit-scrollbar {
+    display: none;
+}
+
+/* nasconderà la scrollbar per IE, Edge e Firefox */
+.box-description {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow-y: auto; /* questo manterrà comunque lo scorrimento attivo */
+}
+
 
 /* stile specifico per il testo del box */
 .text-description {
